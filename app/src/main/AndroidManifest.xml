@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sjack158.alzheimer_s_games_phase01_mockups">
 
-    <users-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfirmationActivity"></activity>
+
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".AdminLoginActivity"></activity>
         <activity android:name=".ForgotPassActivity"></activity>
