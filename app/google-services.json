@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1004810621910",
+    "firebase_url": "https://busybraingames.firebaseio.com",
+    "project_id": "busybraingames",
+    "storage_bucket": "busybraingames.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004810621910:android:3dc9f8428f8e0810",
+        "android_client_info": {
+          "package_name": "com.example.sjack158.alzheimer_s_games_phase01_mockups"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004810621910-jb53i6ab5fmrjjp2749ca5k3k7m5vcbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArFCmLpy8rs_qM0o8N2TEfU3u79x9EE6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

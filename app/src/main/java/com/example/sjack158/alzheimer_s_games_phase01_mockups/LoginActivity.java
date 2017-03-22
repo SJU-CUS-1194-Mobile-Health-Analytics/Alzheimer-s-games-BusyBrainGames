@@ -26,6 +26,8 @@ public class LoginActivity extends Activity
         setContentView(R.layout.activity_login);
 
         login = (Button) findViewById(R.id.LoginButton);
+        forgotpass= (Button) findViewById(R.id.ForgotButton);
+        signup = (Button) findViewById(R.id.SignUpButton);
         usernameEdit = (EditText) findViewById(R.id.EnterNameText);
         passwordEdit = (EditText) findViewById(R.id.EnterPasswordText);
 
@@ -56,6 +58,21 @@ public class LoginActivity extends Activity
                 }
             }
         });
+
+
+        signup.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(LoginActivity.this , SignUpActivity.class);
+                //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
+                startActivity(intent);
+
+
+            }
+        });
+
 
         forgotpass.setOnClickListener(new View.OnClickListener()
         {
