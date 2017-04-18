@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,13 +18,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 
 import static android.text.TextUtils.*;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
-
+    //private static final String TAG = "EmailPassword";
 
     //defining view objects
     private EditText editTextEmail;
@@ -35,7 +41,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
 
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
+    private DatabaseReference mDatabase;
+    public String Username;
+    public String fname;
+    public String lname;
+    public String email;
+    public String password;
 
 
 
@@ -56,6 +69,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         Button but = (Button) findViewById(R.id.button2);
 
         but.setOnClickListener(this);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_in:" + user.getUid(),Toast.LENGTH_LONG).show();
+                } else {
+                    // User is signed out
+                    Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_out", Toast.LENGTH_LONG).show();
+                }
+                // ...
+            }
+        };
+
 
     }
 
@@ -100,12 +129,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
 
+
+
     }
 
-                                   public void onClick(View v)
-                                   {
+                                   public void onClick(View v) {
                                        //calling register method on click
                                        registerUser();
+                                      //sendTestData(v);
 
                                        Intent intent = new Intent(SignUpActivity.this, ConfirmationActivity.class);
 
@@ -113,5 +144,27 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
                                    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            firebaseAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+//    public void sendTestData(View view)
+//    {
+//        // Write a message to the database
+//
+//
+//
+//    }
                                }
 

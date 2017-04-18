@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Alzheimer-s-games-Phase01-Mockups</string>
+
+        <string name="navigation_drawer_open">Open navigation drawer</string>
+        <string name="navigation_drawer_close">Close navigation drawer</string>
+
+        <string name="action_settings">Settings</string>
+
+    <string name="memory_game">Memory Game</string>
+    <string-array name="type">
+        <item> New Game</item>
+        <item>Level 1</item>
+        <item>Level 2</item>
+        <item>Level 3</item>
+    </string-array>
 </resources>

@@ -12,16 +12,17 @@
 
 
     <EditText
-        android:hint = "Enter Username"
+        android:hint = "Enter Email Address"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:id = "@+id/EnterNameText"
+        android:id = "@+id/EnterEmailText"
         android:focusable = "true"
         android:textColorHint="#ffff299f"
         android:layout_above="@+id/EnterPasswordText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="14dp" />
+        android:layout_marginBottom="14dp"
+        android:textSize="25sp" />
 
     <Button
         android:text="Forgot Password"
@@ -31,16 +32,8 @@
         android:layout_marginBottom="42dp"
         android:layout_above="@+id/SignUpButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:src="@drawable/brainlogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/SignUpButton"
-        android:layout_alignStart="@+id/SignUpButton" />
+        android:layout_alignParentEnd="true"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,7 +46,8 @@
         android:layout_alignBottom="@+id/LoginButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:textSize="25sp" />
 
     <Button
         android:text="Login"
@@ -63,7 +57,8 @@
         android:layout_marginBottom="33dp"
         android:layout_above="@+id/ForgotButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="20sp" />
 
     <Button
         android:text="Create Account"
@@ -72,7 +67,17 @@
         android:id="@+id/SignUpButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:src="@drawable/brainlogo"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:id="@+id/imageView"
+        android:layout_marginTop="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

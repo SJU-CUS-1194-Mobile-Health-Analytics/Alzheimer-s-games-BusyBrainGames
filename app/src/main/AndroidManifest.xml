@@ -22,7 +22,11 @@
         <activity android:name=".ForgotPassActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".ConfirmationActivity"></activity>
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name=".DashboardActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+        </activity>
+        <activity android:name=".Manager"></activity>
+        <activity android:name=".TestReceiveMemoryDataActivity"></activity>
 
 
     </application>

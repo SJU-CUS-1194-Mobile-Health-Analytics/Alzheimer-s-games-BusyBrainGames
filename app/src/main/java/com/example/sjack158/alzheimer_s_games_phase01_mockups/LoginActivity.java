@@ -3,8 +3,11 @@ package com.example.sjack158.alzheimer_s_games_phase01_mockups;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,60 +15,79 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends Activity
-{
-    
+
+public class LoginActivity extends Activity {
+    private static final String TAG = "EmailPassword";
+
     Button login, forgotpass, signup;
-    EditText usernameEdit, passwordEdit;
+    EditText EmailEdit, passwordEdit;
 
+    //Start declare_auth
+    private FirebaseAuth mAuth;
+    //Start declare_auth_listener
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //Views && Buttons
         login = (Button) findViewById(R.id.LoginButton);
-        forgotpass= (Button) findViewById(R.id.ForgotButton);
+        forgotpass = (Button) findViewById(R.id.ForgotButton);
         signup = (Button) findViewById(R.id.SignUpButton);
-        usernameEdit = (EditText) findViewById(R.id.EnterNameText);
+        EmailEdit = (EditText) findViewById(R.id.EnterEmailText);
         passwordEdit = (EditText) findViewById(R.id.EnterPasswordText);
+        //initializing firebase auth object
+        mAuth = FirebaseAuth.getInstance();
 
-        login.setOnClickListener(new View.OnClickListener()
-        {
+        //Start auth_state_listener
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (usernameEdit.getText().toString().equals("Name") &&
-                        passwordEdit.getText().toString().equals("Password"))
-                {
-                    /*
-                        A toast provides simple feedback about an operation in a small popup.
-                        It only fills the amount of space required for the message and the current
-                        activity remains visible and interactive.
-
-                    */
-                    Toast.makeText(getApplicationContext(),
-                            "Loading Dashboard...", Toast.LENGTH_SHORT).show();
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),
-                            "Wrong Credentials..",Toast.LENGTH_SHORT).show();
-
-
-
-                }
+                updateUI(user);
             }
+        }; //End auth_state_listener
+
+        //Once the user clicks the login button....
+        login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int i = v.getId();
+                if (i == R.id.LoginButton) {
+                    signIn(EmailEdit.getText().toString(), passwordEdit.getText().toString());
+                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                    //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
+                    startActivity(intent);
+                }
+
+
+
+
+            }
+
+
         });
 
-
-        signup.setOnClickListener(new View.OnClickListener()
-        {
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(LoginActivity.this , SignUpActivity.class);
+            public void onClick(View v) {
+
+
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
                 startActivity(intent);
 
@@ -75,11 +97,11 @@ public class LoginActivity extends Activity
 
 
         forgotpass.setOnClickListener(new View.OnClickListener()
+
         {
             @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(LoginActivity.this , ForgotPassActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
                 //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
                 startActivity(intent);
 
@@ -87,5 +109,101 @@ public class LoginActivity extends Activity
             }
         });
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    private void signIn(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+        if (!validateForm()) {
+            return;
+        }
+
+        //showProgressDialog();
+
+        // [START sign_in_with_email]
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Toast.makeText(LoginActivity.this, "Incorrect Email Address",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // [START_EXCLUDE]
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Successful!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        //hideProgressDialog();
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END sign_in_with_email]
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = EmailEdit.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            EmailEdit.setError("Required.");
+            valid = false;
+        } else {
+            EmailEdit.setError(null);
+        }
+
+        String password = passwordEdit.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            passwordEdit.setError("Required.");
+            valid = false;
+        } else {
+            passwordEdit.setError(null);
+        }
+
+        return valid;
+    }
+
+    private void updateUI(FirebaseUser user) {
+        // hideProgressDialog();
+        if (user != null) {
+//            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
+//                    user.getEmail(), user.isEmailVerified()));
+            // mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+
+            findViewById(R.id.EnterPasswordText).setVisibility(View.VISIBLE);
+            findViewById(R.id.EnterEmailText).setVisibility(View.VISIBLE);
+            findViewById(R.id.LoginButton).setVisibility(View.VISIBLE);
+
+            //findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
+        } else {
+//            mStatusTextView.setText(R.string.signed_out);
+//            mDetailTextView.setText(null);
+
+            findViewById(R.id.EnterPasswordText).setVisibility(View.VISIBLE);
+            findViewById(R.id.EnterEmailText).setVisibility(View.VISIBLE);
+            findViewById(R.id.LoginButton).setVisibility(View.VISIBLE);
+        }
+    }
 }
+
 
