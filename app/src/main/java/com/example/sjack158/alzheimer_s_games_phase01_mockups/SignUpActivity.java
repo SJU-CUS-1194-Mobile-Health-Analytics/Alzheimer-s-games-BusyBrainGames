@@ -28,7 +28,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import static android.text.TextUtils.*;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener
+{
+
+
+
     //private static final String TAG = "EmailPassword";
 
     //defining view objects
@@ -49,7 +53,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public String lname;
     public String email;
     public String password;
+    public String userID;
 
+    UserGameTransaction game01= new UserGameTransaction(userID, email);
 
 
     @Override
@@ -65,6 +71,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Button but = (Button) findViewById(R.id.button2);
 
@@ -73,9 +80,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
                     // User is signed in
+//                    userID = user.getUid();
+//                    email = user.getEmail();
+
                     Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_in:" + user.getUid(),Toast.LENGTH_LONG).show();
                 } else {
                     // User is signed out
@@ -136,7 +146,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                    public void onClick(View v) {
                                        //calling register method on click
                                        registerUser();
-                                      //sendTestData(v);
+
+                                       //Sending User Information to Database
+                                       //submitUserGameData();
 
                                        Intent intent = new Intent(SignUpActivity.this, ConfirmationActivity.class);
 
@@ -145,6 +157,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                                    }
 
+    public void submitUserGameData()
+    {
+        Toast.makeText(this, "Posting Your Profile Information...", Toast.LENGTH_SHORT).show();
+        //UserGameTransaction game01 = new UserGameTransaction();
+            game01.setUid(userID);
+            game01.setEmail(email);
+
+        //mDatabase.child("users").child(userID).child("userInformation").child(email);
+
+        mDatabase.child("users").child(userID).setValue(userID);
+        mDatabase.child("users").child(userID).child("Email Address").setValue(email);
+    }
 
     @Override
     public void onStart() {
@@ -159,12 +183,5 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             firebaseAuth.removeAuthStateListener(mAuthListener);
         }
     }
-//    public void sendTestData(View view)
-//    {
-//        // Write a message to the database
-//
-//
-//
-//    }
-                               }
+}
 

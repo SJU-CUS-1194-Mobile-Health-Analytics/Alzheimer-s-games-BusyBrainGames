@@ -17,14 +17,24 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity
+{
+
+    public String email;
+    public String userID;
+    UserGameTransaction game01= new UserGameTransaction(userID, email);
+    private DatabaseReference mDatabase;
+
     private static final String TAG = "EmailPassword";
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     Button login, forgotpass, signup;
     EditText EmailEdit, passwordEdit;
 
@@ -37,6 +47,10 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         //Views && Buttons
         login = (Button) findViewById(R.id.LoginButton);
@@ -44,6 +58,7 @@ public class LoginActivity extends Activity {
         signup = (Button) findViewById(R.id.SignUpButton);
         EmailEdit = (EditText) findViewById(R.id.EnterEmailText);
         passwordEdit = (EditText) findViewById(R.id.EnterPasswordText);
+
         //initializing firebase auth object
         mAuth = FirebaseAuth.getInstance();
 
@@ -51,9 +66,13 @@ public class LoginActivity extends Activity {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+                FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
+                if (user != null)
+                {
                     // User is signed in
+
+                    userID = user.getUid();
+                    email = user.getEmail();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -66,13 +85,12 @@ public class LoginActivity extends Activity {
         //Once the user clicks the login button....
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int i = v.getId();
-                if (i == R.id.LoginButton) {
+
                     signIn(EmailEdit.getText().toString(), passwordEdit.getText().toString());
-                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                    //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
-                    startActivity(intent);
-                }
+                //Sending User Information to Database
+                    submitUserGameData();
+
+               // }
 
 
 
@@ -110,11 +128,25 @@ public class LoginActivity extends Activity {
         });
     }
 
+    public void submitUserGameData()
+    {
+        Toast.makeText(this, "Posting Your Profile Information...", Toast.LENGTH_SHORT).show();
+        //UserGameTransaction game01 = new UserGameTransaction();
+        game01.setUid(userID);
+        game01.setEmail(email);
+
+        //mDatabase.child("users").child(userID).child("userInformation").child(email);
+
+        mDatabase.child("users").child(userID).setValue(userID);
+        mDatabase.child("users").child(userID).child("Email Address").setValue(email);
+    }
 
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+       // mAuth.addAuthStateListener(mAuthListener);
+        FirebaseUser currentUser=  mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
     @Override
@@ -125,9 +157,11 @@ public class LoginActivity extends Activity {
         }
     }
 
-    private void signIn(String email, String password) {
+    private void signIn(String email, String password)
+    {
         Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
+        if (!validateForm())
+        {
             return;
         }
 
@@ -138,22 +172,33 @@ public class LoginActivity extends Activity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
+
+                        // [START_EXCLUDE]
+                        if (task.isSuccessful())
+                        {
+                            Log.d(TAG, "signInWithEmail:onComplete:");
+                            Toast.makeText(LoginActivity.this, "Successful!",
+                                    Toast.LENGTH_SHORT).show();
+
+
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                            //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
+                            startActivity(intent);
+                            updateUI(user);
+
+
+                        }
+                        else
+                        {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginActivity.this, "Incorrect Email Address",
                                     Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
 
-                        // [START_EXCLUDE]
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Successful!",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+
                         //hideProgressDialog();
                         // [END_EXCLUDE]
                     }
@@ -188,7 +233,7 @@ public class LoginActivity extends Activity {
         if (user != null) {
 //            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
 //                    user.getEmail(), user.isEmailVerified()));
-            // mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+//             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             findViewById(R.id.EnterPasswordText).setVisibility(View.VISIBLE);
             findViewById(R.id.EnterEmailText).setVisibility(View.VISIBLE);
@@ -204,6 +249,8 @@ public class LoginActivity extends Activity {
             findViewById(R.id.LoginButton).setVisibility(View.VISIBLE);
         }
     }
+
+
 }
 
 

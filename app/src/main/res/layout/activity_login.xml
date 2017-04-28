@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.LoginActivity">
+    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.LoginActivity"
+    android:background="@color/common_google_signin_btn_text_dark_default">
 
 
     <EditText
@@ -17,7 +18,7 @@
         android:layout_height = "wrap_content"
         android:id = "@+id/EnterEmailText"
         android:focusable = "true"
-        android:textColorHint="#ffff299f"
+        android:textColorHint="@color/colorPrimaryDark"
         android:layout_above="@+id/EnterPasswordText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -41,7 +42,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/EnterPasswordText"
-        android:textColorHint="#ffff299f"
+        android:textColorHint="@color/colorPrimaryDark"
         android:hint="Enter Password"
         android:layout_alignBottom="@+id/LoginButton"
         android:layout_alignParentLeft="true"

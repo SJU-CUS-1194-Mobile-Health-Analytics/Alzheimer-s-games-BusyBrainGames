@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.DashboardActivity"
+
+    android:background="@color/common_google_signin_btn_text_dark_default">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/memorybrain"
+        android:id="@+id/memorybutton"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_alignTop="@+id/speedbutton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        app:srcCompat="@drawable/attentionicon"
+        android:id="@+id/attentionbutton"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="57dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Problem Solving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/problemsolveTextView"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/attentionbutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Perception"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/percepTextView"
+        android:textSize="30sp"
+        android:textAllCaps="true"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/attentionbutton"
+        android:layout_alignLeft="@+id/memorybutton"
+        android:layout_alignStart="@+id/memorybutton"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:text="Brain Memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/memoryTextView"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:layout_below="@+id/speedbutton"
+        android:layout_alignLeft="@+id/memorybutton"
+        android:layout_alignStart="@+id/memorybutton" />
+
+    <TextView
+        android:text="Test Your Speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/speedTextView"
+        android:textSize="30sp"
+        android:textAllCaps="true"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/speedbutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        app:srcCompat="@drawable/problemsolving"
+        android:id="@+id/problemsolvingbutton"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_above="@+id/problemsolveTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/speedicon"
+        android:id="@+id/speedbutton"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:layout_marginTop="78dp"
+        android:layout_below="@+id/problemsolveTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <Button
+        android:text="Sign Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signOutButton"
+        android:textStyle="normal|bold"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/percepTextView"
+        android:layout_toEndOf="@+id/percepTextView" />
+</RelativeLayout>

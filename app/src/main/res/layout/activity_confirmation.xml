@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/common_google_signin_btn_text_dark_default">
 
     <ImageView
         android:src="@drawable/brainlogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
         android:id="@+id/brainlogo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp" />
-
-    <TextView
-        android:text="No email? No problem!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:textSize="25sp"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
-
-    <Button
-        android:text="Resend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/resend"
-        android:layout_marginBottom="51dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Click the RESEND button below"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView9"
-        android:textSize="25sp"
-        android:layout_marginBottom="21dp"
-        android:layout_above="@+id/resend"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="13dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
 
     <TextView
         android:text="Check Your Email"
@@ -50,5 +22,45 @@
         android:layout_below="@+id/brainlogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp" />
+
+    <TextView
+        android:text="Click the RESEND button below"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textSize="25sp"
+        android:layout_marginBottom="101dp"
+        android:layout_above="@+id/resend"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="No email? No problem!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="25sp"
+        android:layout_marginBottom="51dp"
+        android:layout_above="@+id/textView9"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resend"
+        android:layout_marginBottom="115dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Go Back To Login Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:id="@+id/backlogin"
+        android:textStyle="normal|bold"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
