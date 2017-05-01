@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Alzheimer-s-games-BusyBrainGames.iml" filepath="$PROJECT_DIR$/Alzheimer-s-games-BusyBrainGames.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Alzheimer-s-games-Phase01-Mockups.iml" filepath="$PROJECT_DIR$/Alzheimer-s-games-Phase01-Mockups.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

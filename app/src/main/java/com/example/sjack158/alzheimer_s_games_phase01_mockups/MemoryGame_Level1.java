@@ -6,6 +6,7 @@ import android.content.Context;
         import android.graphics.drawable.Drawable;
         import android.os.Bundle;
         import android.os.Handler;
+        import java.util.Date;
         import android.os.Message;
         import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
@@ -17,12 +18,13 @@ import android.content.Context;
         import android.widget.TextView;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-        import java.util.List;
+import java.util.Calendar;
+import java.util.List;
         import java.util.Random;
         import java.util.Timer;
         import java.util.TimerTask;
-
 
 
 /*
@@ -64,6 +66,9 @@ public class MemoryGame_Level1 extends AppCompatActivity {
     private int x=4;
     private int y=4;
     int turns;
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
 
@@ -76,7 +81,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         setContentView(R.layout.memory_game_level1);
         handler = new UpdateCardsHandler();
         createCards();
-        backOfCard = getResources().getDrawable(R.drawable.memorybrain);
+        backOfCard = getResources().getDrawable(R.drawable.redbrain);
         menuLayout = (TableLayout) findViewById(R.id.MenuLayout);
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();
@@ -110,6 +115,10 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         addCards();
         turns=0;
         ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns);
+//        time = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+//        GameScore score = new GameScore(time, turns);
+//        System.out.println("Score: " + score.getTime()+ score.getScore()
+
         //createCards();
 
     }
@@ -213,7 +222,8 @@ public class MemoryGame_Level1 extends AppCompatActivity {
                 card2 = new MemoryGameCard(button,a,b);
 
                 turns++;
-                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns);
+                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns + datetime);
+
 
 
 
