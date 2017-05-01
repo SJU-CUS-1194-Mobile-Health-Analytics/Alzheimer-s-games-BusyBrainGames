@@ -9,12 +9,13 @@ import java.util.Date;
 
 public class GameScore {
 
-  public int score;
-   public Date date = new Date();
+    public int score;
+    public Date date = new Date();
+    //public String timeStamp=date.toString();
 
-    public GameScore(String date, int score)
+    public GameScore(String timeStamp, int score)
     {
-        date=" ";
+        timeStamp=date.toString();
         score=0;
     }
 

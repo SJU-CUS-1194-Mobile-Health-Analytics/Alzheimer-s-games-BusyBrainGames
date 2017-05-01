@@ -86,9 +86,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();
         newGame(x,y);
-
-
-
+        score = new GameScore(datetime, turns);
 
     }
 
@@ -114,12 +112,6 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         card1=null;
         addCards();
         turns=0;
-        ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns);
-//        time = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-//        GameScore score = new GameScore(time, turns);
-//        System.out.println("Score: " + score.getTime()+ score.getScore()
-
-        //createCards();
 
     }
 
@@ -222,7 +214,8 @@ public class MemoryGame_Level1 extends AppCompatActivity {
                 card2 = new MemoryGameCard(button,a,b);
 
                 turns++;
-                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns + datetime);
+                score.setScore(turns);
+                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+  score.getScore() );
 
 
 
@@ -281,6 +274,10 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         startActivity(intent);
     }
 
+public String getScoreInfo(GameScore scores)
+{
+    return "Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+}
 
 
 

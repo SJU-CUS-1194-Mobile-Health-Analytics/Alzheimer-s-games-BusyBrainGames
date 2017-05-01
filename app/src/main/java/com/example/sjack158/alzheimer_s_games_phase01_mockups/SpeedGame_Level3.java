@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Date;
+
 /**
  * Created by CelesteG on 5/1/17.
  */
@@ -18,6 +20,9 @@ public class SpeedGame_Level3 extends AppCompatActivity{
     int size = 15;
     int moves;
     Button back;
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
 
     Game3 game = new Game3( buttons, textView_message);
 
@@ -27,6 +32,7 @@ public class SpeedGame_Level3 extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.speed_level3);
         back= (Button) findViewById(R.id.ReturnButt) ;
+        score = new GameScore(datetime, moves);
 
         game.buttons[0] = (Button) findViewById(R.id.button1);
         game.buttons[1] = (Button) findViewById(R.id.button2);
@@ -65,7 +71,8 @@ public class SpeedGame_Level3 extends AppCompatActivity{
     public void clickSliderTile(View tile)
     {
         game.tryToMoveTile(tile);
-        ((TextView)findViewById(R.id.Moves)).setText("Moves: "+ game.getMoves());
+        score.setScore(game.getMoves());
+        ((TextView) findViewById(R.id.Moves)).setText("Moves: " + score.getScore());
 
     }
 
@@ -81,7 +88,10 @@ public class SpeedGame_Level3 extends AppCompatActivity{
         Intent intent = new Intent(this, Speed_Levels.class);
         startActivity(intent);
     }
-
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    }
 
 }
 
