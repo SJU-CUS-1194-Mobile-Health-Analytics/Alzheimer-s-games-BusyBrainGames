@@ -51,7 +51,7 @@ public class MemoryGame_Level3 extends AppCompatActivity {
         setContentView(R.layout.memory_game_level3);
         handler = new UpdateCardsHandler();
         createCards();
-        backOfCard = getResources().getDrawable(R.drawable.memorybrain);
+        backOfCard = getResources().getDrawable(R.drawable.redbrain);
         menuLayout = (TableLayout) findViewById(R.id.MenuLayout);
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();

@@ -47,15 +47,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    private DatabaseReference mDatabase;
-    public String Username;
-    public String fname;
-    public String lname;
-    public String email;
-    public String password;
-    public String userID;
-
-    UserGameTransaction game01= new UserGameTransaction(userID, email);
 
 
     @Override
@@ -71,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         Button but = (Button) findViewById(R.id.button2);
 
@@ -82,11 +73,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    // User is signed in
-//                    userID = user.getUid();
-//                    email = user.getEmail();
+//                    // User is signed in
+                // String userID = user.getUid();
+////                    email = user.getEmail();
 
-                    Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_in:" + user.getUid(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_in:",Toast.LENGTH_LONG).show();
                 } else {
                     // User is signed out
                     Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_out", Toast.LENGTH_LONG).show();
@@ -147,8 +138,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                        //calling register method on click
                                        registerUser();
 
-                                       //Sending User Information to Database
-                                       //submitUserGameData();
 
                                        Intent intent = new Intent(SignUpActivity.this, ConfirmationActivity.class);
 
@@ -157,18 +146,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                                    }
 
-    public void submitUserGameData()
-    {
-        Toast.makeText(this, "Posting Your Profile Information...", Toast.LENGTH_SHORT).show();
-        //UserGameTransaction game01 = new UserGameTransaction();
-            game01.setUid(userID);
-            game01.setEmail(email);
 
-        //mDatabase.child("users").child(userID).child("userInformation").child(email);
-
-        mDatabase.child("users").child(userID).setValue(userID);
-        mDatabase.child("users").child(userID).child("Email Address").setValue(email);
-    }
 
     @Override
     public void onStart() {

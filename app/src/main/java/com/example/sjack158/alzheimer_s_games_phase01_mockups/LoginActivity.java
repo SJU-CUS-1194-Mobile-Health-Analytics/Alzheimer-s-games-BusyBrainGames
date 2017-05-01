@@ -28,10 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LoginActivity extends Activity
 {
 
-    public String email;
-    public String userID;
-    UserGameTransaction game01= new UserGameTransaction(userID, email);
-    private DatabaseReference mDatabase;
+
 
     private static final String TAG = "EmailPassword";
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -47,7 +44,7 @@ public class LoginActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -71,8 +68,8 @@ public class LoginActivity extends Activity
                 {
                     // User is signed in
 
-                    userID = user.getUid();
-                    email = user.getEmail();
+//                    userID = user.getUid();
+//                    email = user.getEmail();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -87,8 +84,7 @@ public class LoginActivity extends Activity
             public void onClick(View v) {
 
                     signIn(EmailEdit.getText().toString(), passwordEdit.getText().toString());
-                //Sending User Information to Database
-                    submitUserGameData();
+
 
                // }
 
@@ -128,18 +124,7 @@ public class LoginActivity extends Activity
         });
     }
 
-    public void submitUserGameData()
-    {
-        Toast.makeText(this, "Posting Your Profile Information...", Toast.LENGTH_SHORT).show();
-        //UserGameTransaction game01 = new UserGameTransaction();
-        game01.setUid(userID);
-        game01.setEmail(email);
 
-        //mDatabase.child("users").child(userID).child("userInformation").child(email);
-
-        mDatabase.child("users").child(userID).setValue(userID);
-        mDatabase.child("users").child(userID).child("Email Address").setValue(email);
-    }
 
     @Override
     public void onStart() {
@@ -187,6 +172,7 @@ public class LoginActivity extends Activity
                             //Intent intent = new Intent(CurrentActivity.this, NextActivity.class)
                             startActivity(intent);
                             updateUI(user);
+
 
 
                         }

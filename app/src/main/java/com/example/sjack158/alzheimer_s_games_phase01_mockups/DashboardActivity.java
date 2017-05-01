@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+
 public class DashboardActivity extends AppCompatActivity
 
 {
@@ -48,6 +50,8 @@ public class DashboardActivity extends AppCompatActivity
                 signOut();
                 Intent intent = new Intent(DashboardActivity.this, HomeActivity.class);
                 startActivity(intent);
+
+
             }
 
         }   );
