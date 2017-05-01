@@ -43,21 +43,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MemoryGameInstructions">
+     <activity android:name=".MemoryGameInstructions">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+              <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+       </activity>
 
-        <activity android:name=".MemoryLevels">
-            <intent-filter>
+      <activity android:name=".MemoryLevels">
+           <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+         </intent-filter>
+      </activity>
 
         <activity android:name=".MemoryGame_Level1">
             <intent-filter>
@@ -67,22 +67,54 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MemoryGame_Level2">
+       <activity android:name=".MemoryGame_Level2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+       </activity>
 
         <activity android:name=".MemoryGame_Level3">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+               <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Speed_Instructions">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name=".Speed_Levels">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SpeedGame_Level1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SpeedGame_Level2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SpeedGame_Level3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".AdminLoginActivity">
             <intent-filter>
