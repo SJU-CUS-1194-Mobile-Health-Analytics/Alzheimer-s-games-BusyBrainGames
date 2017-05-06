@@ -66,6 +66,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
     private int x=4;
     private int y=4;
     int turns;
+    int moves;
     Date date= new Date();
     String datetime=date.toString();
     GameScore score;
@@ -87,6 +88,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         buttonListener = new ButtonListener();
         newGame(x,y);
         score = new GameScore(datetime, turns);
+
 
     }
 
@@ -112,6 +114,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         card1=null;
         addCards();
         turns=0;
+        moves=0;
 
     }
 
@@ -181,6 +184,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
         button.setId(100*x+y);
         button.setOnClickListener(buttonListener);
         return button;
+
     }
     class ButtonListener implements View.OnClickListener {
 
@@ -215,8 +219,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
 
                 turns++;
                 score.setScore(turns);
-                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+  score.getScore() );
-
+                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+  score.getScore());
 
 
 
@@ -254,10 +257,17 @@ public class MemoryGame_Level1 extends AppCompatActivity {
                 MatchCards();
             }
         }
+
         public void MatchCards(){
             if(cards[card2.x][card2.y] == cards[card1.x][card1.y]){
                 card1.button.setVisibility(View.INVISIBLE);
                 card2.button.setVisibility(View.INVISIBLE);
+                moves++;
+                if(moves==8)
+                {
+                    ((TextView)findViewById(R.id.FinalScore)).setText("Final Score: " + getScoreInfo(score));
+                }
+
             }
             else {
                 card2.button.setBackgroundDrawable(backOfCard);
@@ -266,6 +276,7 @@ public class MemoryGame_Level1 extends AppCompatActivity {
 
             card1=null;
             card2=null;
+
         }
     }
     public void sendMessage( View v)
@@ -276,8 +287,10 @@ public class MemoryGame_Level1 extends AppCompatActivity {
 
 public String getScoreInfo(GameScore scores)
 {
-    return "Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    return "Level 1" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
 }
+
+
 
 
 

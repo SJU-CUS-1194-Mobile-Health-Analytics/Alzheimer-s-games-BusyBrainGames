@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:src="@drawable/brainlogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/brainlogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:text="RED"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/r2Button"
+        android:textColor="#F00"
+        android:layout_marginLeft="53dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:text="BLACK"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/bk2Button"
+        android:layout_above="@+id/g2Button"
+        android:layout_alignLeft="@+id/b2Button"
+        android:layout_marginBottom="76dp" />
+
+    <Button
+        android:text="BLUE"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/b2Button"
+        android:textColor="#0029cc"
+        android:layout_marginRight="48dp"
+        android:layout_alignBaseline="@+id/r2Button"
+        android:layout_alignBottom="@+id/r2Button"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="CYAN"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/c2Button"
+        android:textColor="#00fffb"
+        android:layout_alignBaseline="@+id/bk2Button"
+        android:layout_alignBottom="@+id/bk2Button"
+        android:layout_alignLeft="@+id/r2Button" />
+
+    <Button
+        android:text="GREEN"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/g2Button"
+        android:textColor="#32CD32"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/textView6"
+        android:layout_alignLeft="@+id/bk2Button" />
+
+    <TextView
+        android:text=""
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:textSize="30sp"
+        android:id="@+id/textView6"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/m2Button"
+        android:layout_toEndOf="@+id/m2Button"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp" />
+
+    <Button
+        android:text="MAGENTA"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="40sp"
+        android:id="@+id/m2Button"
+        android:textColor="#ff0095"
+        android:layout_alignBaseline="@+id/g2Button"
+        android:layout_alignBottom="@+id/g2Button"
+        android:layout_alignLeft="@+id/c2Button" />
+
+    <TextView
+        android:text="Choose the COLOR"
+        android:textSize="50sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/brainlogo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="70sp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="26dp"
+        android:layout_alignLeft="@+id/brainlogo"
+        android:layout_alignStart="@+id/brainlogo" />
+
+    <Button
+        android:id="@+id/returnbutt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/m2Button"
+        android:layout_alignStart="@+id/m2Button"
+        android:layout_marginLeft="24dp"
+        android:onClick=""
+        android:layout_marginStart="24dp" />
+
+
+
+</RelativeLayout>

@@ -17,6 +17,7 @@ package com.example.sjack158.alzheimer_s_games_phase01_mockups;
         import android.widget.TextView;
 
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.List;
         import java.util.Random;
         import java.util.Timer;
@@ -44,6 +45,9 @@ public class MemoryGame_Level3 extends AppCompatActivity {
     int turns;
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,61 +60,7 @@ public class MemoryGame_Level3 extends AppCompatActivity {
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();
         newGame(x,y);
-
-//        Spinner MenuSpinner = (Spinner) findViewById(R.id.Spinner1);
-//        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-//                this, R.array.type, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        MenuSpinner.setAdapter(adapter);
-//        MenuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//            @Override
-//            public void onItemSelected(
-//                    android.widget.AdapterView<?> arg0,
-//                    View v, int pos, long id) {
-//                ((Spinner) findViewById(R.id.Spinner1)).setSelection(0);
-//                Spinner mySpinner = (Spinner) findViewById(R.id.Spinner1);
-//                String option = mySpinner.getSelectedItem().toString();
-//                int x, y;
-//                if (option.equals("Level 1")) {
-//                    x = 4;
-//                    y = 4;
-//                }
-//                if (option.equals("Level 2")) {
-//                    x = 5;
-//                    y = 6;
-//                }
-//                if (option.equals("Level 3")) {
-//                    x = 6;
-//                    y = 6;
-//                }
-//                switch (pos) {
-//                    case 1:
-//                        x = 4;
-//                        y = 4;
-//                        break;
-//                    case 2:
-//                        x = 5;
-//                        y = 6;
-//                        break;
-//                    case 3:
-//                        x = 6;
-//                        y = 6;
-//                        break;
-//                    default:
-//                        return;
-//                }
-//                newGame(x, y);
-//
-//            }
-//
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> arg0) {
-//                // TODO Auto-generated method stub
-//
-//            }
+        score = new GameScore(datetime, turns);
 
 
     }
@@ -241,7 +191,8 @@ public class MemoryGame_Level3 extends AppCompatActivity {
                 card2 = new MemoryGameCard(button,a,b);
 
                 turns++;
-                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns);
+                score.setScore(turns);
+                ((TextView)findViewById(R.id.tv1)).setText("Moves: "+  score.getScore());
 
 
                 TimerTask task = new TimerTask() {
@@ -295,6 +246,15 @@ public class MemoryGame_Level3 extends AppCompatActivity {
         Intent intent = new Intent(this, MemoryLevels.class);
         startActivity(intent);
     }
+
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Level 1" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    }
+
+
+
+
 }
 
 

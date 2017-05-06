@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Attention_Instructions">
 
 
     <Button
-        android:id="@+id/buttoncont"
+        android:id="@+id/buttonToContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick=""
+
         android:text="Continue"
         android:textSize="35sp"
+        android:onClick=""
         android:layout_below="@+id/textView6"
-        android:layout_alignRight="@+id/textView6"
-        android:layout_alignEnd="@+id/textView6"
-        android:layout_marginTop="14dp" />
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
@@ -41,8 +43,8 @@
         android:layout_below="@+id/textView"
         android:textColor="@android:color/black"
         android:textSize="27sp"
-        android:text="The objective of this game is match images displayed with their corresponding image." />
-
+        android:text="The objective of this game is to match the word, which is a color, to  its corresponding button."
+        />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -76,10 +78,11 @@
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignStart="@+id/textView4"
         android:layout_below="@+id/textView4"
+
         android:textColor="@android:color/black"
         android:textSize="27sp"
-        android:text="You will see a number of cards flipped backside. When you touch the card, it will flip revealing an image. Your goal is to find the same image hidden underneath any      one of the other cards to find the matching pairs." />
-
+        android:text="You must match the color of the word, not the color of the text, to the corresponding button with the matching color."
+        />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -87,7 +90,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        app:srcCompat="@drawable/redbrain" />
+        app:srcCompat="@drawable/attentionicon" />
 
     <TextView
         android:id="@+id/textView6"
@@ -96,22 +99,26 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:text="Deaths from Alzheimer’s increased 71 percent from 2000 to 2013, while deaths from other major diseases (including heart disease, stroke, breast and prostate cancer, and HIV/AIDS) decreased."
+        android:text="Alzheimer's disease is the 6th leading cause of death in the United States. It is the only cause of death among the top 10 in America that cannot be prevented, cured or even slowed."
         android:textColor="@android:color/black"
         android:textSize="27sp" />
-
     <Button
-        android:id="@+id/buttonbacktodash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:onClick=""
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:text="Back"
-        android:layout_alignBaseline="@+id/buttoncont"
-        android:layout_alignBottom="@+id/buttoncont"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_alignStart="@+id/textView6" />
+        android:id="@+id/buttonbacktodashboard"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="35sp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginStart="30dp"
+    android:text="Back"
+    android:layout_alignBaseline="@+id/button"
+    android:layout_alignBottom="@+id/button"
+    android:layout_alignLeft="@+id/textView6"
+        android:onClick="onClick"
+
+    android:layout_alignStart="@+id/textView6"
+
+        />
+
+
 
 </RelativeLayout>

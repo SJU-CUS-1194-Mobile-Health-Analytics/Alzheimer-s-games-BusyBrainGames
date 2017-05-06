@@ -18,6 +18,7 @@ package com.example.sjack158.alzheimer_s_games_phase01_mockups;
         import android.widget.TextView;
 
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.List;
         import java.util.Random;
         import java.util.Timer;
@@ -31,7 +32,6 @@ public class MemoryGame_Level2 extends AppCompatActivity{
     private static int NumOfRows = -1;
     private static int NumOfColumns = -1;
     private Context context;
-    private View view;
     private Drawable backOfCard;
     private int [] [] cards;
     private List<Drawable> cardImages;
@@ -42,6 +42,9 @@ public class MemoryGame_Level2 extends AppCompatActivity{
     private int x=5;
     private int y=6;
     int turns;
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
 
@@ -56,6 +59,7 @@ public class MemoryGame_Level2 extends AppCompatActivity{
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();
         newGame(x,y);
+        score = new GameScore(datetime, turns);
 
 //        Spinner MenuSpinner = (Spinner) findViewById(R.id.Spinner1);
 //        ArrayAdapter adapter = ArrayAdapter.createFromResource(
@@ -137,8 +141,10 @@ public class MemoryGame_Level2 extends AppCompatActivity{
         card1=null;
         addCards();
         turns=0;
-        ((TextView)findViewById(R.id.tv1)).setText("Moves: "+turns);
-        //createCards();
+        score.setScore(turns);
+        ((TextView)findViewById(R.id.tv1)).setText("Moves: "+  score.getScore());
+
+
 
     }
 
@@ -295,5 +301,12 @@ public class MemoryGame_Level2 extends AppCompatActivity{
         Intent intent = new Intent(this, MemoryLevels.class);
         startActivity(intent);
     }
+
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Level 1" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    }
+
+
 }
 

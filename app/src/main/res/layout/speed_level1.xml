@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SpeedGame_Level1" >
+    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.SpeedGame.SpeedGame_Level1" >
 
 
     <RelativeLayout

@@ -1,4 +1,4 @@
-package com.example.sjack158.alzheimer_s_games_phase01_mockups;
+package com.example.sjack158.alzheimer_s_games_phase01_mockups.SpeedGame;
 
 /**
  * Created by CelesteG on 5/1/17.
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
+
+import com.example.sjack158.alzheimer_s_games_phase01_mockups.DashboardActivity;
+import com.example.sjack158.alzheimer_s_games_phase01_mockups.R;
 
 public class Speed_Instructions extends AppCompatActivity {
 

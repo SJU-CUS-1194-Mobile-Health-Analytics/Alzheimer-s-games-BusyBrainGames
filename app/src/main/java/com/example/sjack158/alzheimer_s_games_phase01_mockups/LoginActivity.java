@@ -88,7 +88,7 @@ public class LoginActivity extends Activity
 
                     signIn(EmailEdit.getText().toString(), passwordEdit.getText().toString());
                 //Sending User Information to Database
-                    submitUserGameData();
+                    //submitUserGameData();
 
                // }
 

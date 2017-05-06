@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_level1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.Attention_Level1">
+    <ImageView
+        android:src="@drawable/brainlogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/brainlogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="BLACK"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/Button2"
+        android:layout_marginRight="27dp"
+        android:layout_below="@+id/Button3"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="86dp" />
+
+    <Button
+        android:text="CYAN"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/Button1"
+        android:textColor="#00fffb"
+        android:layout_alignBaseline="@+id/Button2"
+        android:layout_alignBottom="@+id/Button2"
+        android:layout_alignLeft="@+id/Button3" />
+
+    <Button
+        android:text="RED"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:id="@+id/Button3"
+        android:textColor="#F00"
+        android:layout_alignBaseline="@+id/Button4"
+        android:layout_alignBottom="@+id/Button4"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp" />
+
+    <Button
+        android:text="BLUE"
+        android:layout_width="220sp"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:textColor="#0029cc"
+        android:id="@+id/Button4"
+        android:layout_marginTop="105dp"
+        android:layout_below="@+id/color"
+        android:layout_alignLeft="@+id/Button2" />
+
+    <TextView
+        android:text=""
+        android:layout_width="150sp"
+        android:layout_height="50sp"
+        android:textSize="30sp"
+        android:id="@+id/textView5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/Button2"
+        android:layout_alignStart="@+id/Button2" />
+
+    <TextView
+        android:text="Choose the COLOR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:textSize="50sp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/brainlogo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text=""
+        android:layout_width="250sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="22dp"
+        android:textSize="70sp"
+        android:id="@+id/color"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/returnbutt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:onClick=""
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toLeftOf="@+id/brainlogo"
+        android:layout_toStartOf="@+id/brainlogo"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+
+</RelativeLayout>

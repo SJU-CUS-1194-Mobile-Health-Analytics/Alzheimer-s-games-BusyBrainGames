@@ -107,4 +107,22 @@
             />
 
     </TableRow>
+
+    <TableRow
+        android:id="@+id/TableRow7"
+        android:layout_width="wrap_content"
+        android:paddingTop="20sp"
+        android:paddingBottom="20sp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/FinalScore"
+            android:layout_width="wrap_content"
+            android:text=" "
+
+            />
+
+    </TableRow>
 </TableLayout>
