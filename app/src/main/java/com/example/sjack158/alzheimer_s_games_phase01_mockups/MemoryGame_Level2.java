@@ -17,7 +17,12 @@ package com.example.sjack158.alzheimer_s_games_phase01_mockups;
         import android.widget.TableRow;
         import android.widget.TextView;
 
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.List;
         import java.util.Random;
         import java.util.Timer;
@@ -42,13 +47,23 @@ public class MemoryGame_Level2 extends AppCompatActivity{
     private int x=5;
     private int y=6;
     int turns;
+
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
+
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game_level2);
+
+        mAuth = FirebaseAuth.getInstance();
+
         handler = new UpdateCardsHandler();
         createCards();
         backOfCard = getResources().getDrawable(R.drawable.redbrain);
@@ -57,60 +72,6 @@ public class MemoryGame_Level2 extends AppCompatActivity{
         buttonListener = new ButtonListener();
         newGame(x,y);
 
-//        Spinner MenuSpinner = (Spinner) findViewById(R.id.Spinner1);
-//        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-//                this, R.array.type, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        MenuSpinner.setAdapter(adapter);
-//        MenuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//            @Override
-//            public void onItemSelected(
-//                    android.widget.AdapterView<?> arg0,
-//                    View v, int pos, long id) {
-//                ((Spinner) findViewById(R.id.Spinner1)).setSelection(0);
-//                Spinner mySpinner = (Spinner) findViewById(R.id.Spinner1);
-//                String option = mySpinner.getSelectedItem().toString();
-//                int x, y;
-//                if (option.equals("Level 1")) {
-//                    x = 4;
-//                    y = 4;
-//                }
-//                if (option.equals("Level 2")) {
-//                    x = 5;
-//                    y = 6;
-//                }
-//                if (option.equals("Level 3")) {
-//                    x = 6;
-//                    y = 6;
-//                }
-//                switch (pos) {
-//                    case 1:
-//                        x = 4;
-//                        y = 4;
-//                        break;
-//                    case 2:
-//                        x = 5;
-//                        y = 6;
-//                        break;
-//                    case 3:
-//                        x = 6;
-//                        y = 6;
-//                        break;
-//                    default:
-//                        return;
-//                }
-//                newGame(x, y);
-//
-//            }
-//
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> arg0) {
-//                // TODO Auto-generated method stub
-//
-//            }
 
 
     }
@@ -292,8 +253,41 @@ public class MemoryGame_Level2 extends AppCompatActivity{
     }
     public void sendMessage( View v)
     {
+
+        //TODO: Create FireBase DB Table for Memory Game
+        MemoryGameData memoryGameData = new MemoryGameData();
+        memoryGameData.setEmail(mAuth.getCurrentUser().getEmail());
+
+
+        FirebaseDatabase memoryGameDB = FirebaseDatabase.getInstance().getInstance();
+        DatabaseReference ref = memoryGameDB.getReference();
+        //TODO: Needed to establish "timestamp" as key to avoid overrides and use the push( ) method
+        DatabaseReference pushedKEYRef = ref.push();
+        String t = memoryGameData.getTimeStamp();
+        String timeStampID = pushedKEYRef.getKey();
+
+        ref.child("memorygame").child("user").setValue(mAuth.getCurrentUser().getEmail());
+        ref.child("memorygame").child("level02");
+        ref.child("memorygame").child("level02").child("timestamp").child("ID:"+timeStampID).setValue(memoryGameData.getTimeStamp());
+        ref.child("memorygame").child("level02").child("timestamp").child("ID"+timeStampID).child(memoryGameData.getTimeStamp())
+                .child("score").setValue(turns);
+
+
+
+        Log.d("ACTION: MEMORYGAME INFO"," Access");
+
+        //TODO: Upload data once user returns to level menu
         Intent intent = new Intent(this, MemoryLevels.class);
         startActivity(intent);
     }
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Level 2" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    }
+
+
+
+
+
 }
 

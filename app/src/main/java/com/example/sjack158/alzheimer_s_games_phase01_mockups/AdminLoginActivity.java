@@ -25,7 +25,7 @@ public class AdminLoginActivity extends Activity {
             @Override
             public void onClick(View v)
             {
-                if (enterAdminID.getText().toString().equals("XYZ"))
+                if (enterAdminID.getText().toString().equals("Clara Barton"))
                 {
                     /*
                         A toast provides simple feedback about an operation in a small popup.
@@ -58,7 +58,7 @@ public class AdminLoginActivity extends Activity {
 
 
                 Toast.makeText(getApplicationContext(),
-                        " OH SNAP! Please Contact Healthcare Facility Manager...", Toast.LENGTH_SHORT).show();
+                        " OH SNAP! Please Contact HR...", Toast.LENGTH_SHORT).show();
             }
         });
 

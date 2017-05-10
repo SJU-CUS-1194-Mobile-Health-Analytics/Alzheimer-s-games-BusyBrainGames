@@ -42,10 +42,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         //editTest id: editText5
     private ProgressDialog progressDialog;
 
+    private EditText editTextFname;
+    private EditText editTextLname;
+
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+    //private UserProfileData userExample;
+
+
 
 
 
@@ -57,10 +65,29 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         //initializing firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+
         editTextEmail = (EditText) findViewById(R.id.editText3);
         editTextPassword = (EditText) findViewById(R.id.editText5);
+        editTextFname = (EditText)  findViewById(R.id.editText);
+        editTextLname = (EditText) findViewById(R.id.editText2);
+
+
+
+
+
 
         progressDialog = new ProgressDialog(this);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -72,13 +99,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
-                if (user != null) {
-//                    // User is signed in
-                // String userID = user.getUid();
-////                    email = user.getEmail();
+                if (user != null)
+                {
 
                     Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_in:",Toast.LENGTH_LONG).show();
-                } else {
+                }
+                else {
                     // User is signed out
                     Toast.makeText(SignUpActivity.this, "onAuthStateChanged:signed_out", Toast.LENGTH_LONG).show();
                 }
@@ -94,6 +120,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         //getting email and password from edit texts
         String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
+
 
         //checking if email and passwords are empty
         if(isEmpty(email)){
@@ -139,6 +166,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                        registerUser();
 
 
+                                       sendProfileData();
+
                                        Intent intent = new Intent(SignUpActivity.this, ConfirmationActivity.class);
 
                                        startActivity(intent);
@@ -147,6 +176,23 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                    }
 
 
+    public void sendProfileData()
+    {
+        UserProfileData userProfile = new UserProfileData( );
+
+        userProfile.setEmail(editTextEmail.getText().toString());
+        userProfile.setFname(editTextFname.getText().toString());
+        userProfile.setLname(editTextLname.getText().toString());
+        FirebaseDatabase userDB = FirebaseDatabase.getInstance().getInstance();
+        DatabaseReference ref = userDB.getReference();
+        ref.child("users").child("email").setValue(userProfile.getEmail());
+        ref.child("users")
+                .child("email").child(userProfile.getEmail()).child("firstname").setValue(userProfile.getFname());
+        ref.child("users")
+                .child("email").child(userProfile.getEmail()).child("lastname").setValue(userProfile.getLname());
+
+        Log.d("ACTION: SEND USER INFO","FIREBASE DB Access");
+    }
 
     @Override
     public void onStart() {

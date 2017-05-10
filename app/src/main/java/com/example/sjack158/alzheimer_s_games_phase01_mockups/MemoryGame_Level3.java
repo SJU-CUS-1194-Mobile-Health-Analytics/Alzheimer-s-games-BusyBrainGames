@@ -16,7 +16,12 @@ package com.example.sjack158.alzheimer_s_games_phase01_mockups;
         import android.widget.TableRow;
         import android.widget.TextView;
 
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.List;
         import java.util.Random;
         import java.util.Timer;
@@ -42,13 +47,24 @@ public class MemoryGame_Level3 extends AppCompatActivity {
     private int x=6;
     private int y=6;
     int turns;
+
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
+
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
+
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game_level3);
+
+        mAuth = FirebaseAuth.getInstance();
+
         handler = new UpdateCardsHandler();
         createCards();
         backOfCard = getResources().getDrawable(R.drawable.redbrain);
@@ -292,8 +308,37 @@ public class MemoryGame_Level3 extends AppCompatActivity {
     }
     public void sendMessage( View v)
     {
+
+        //TODO: Create FireBase DB Table for Memory Game
+        MemoryGameData memoryGameData = new MemoryGameData();
+        memoryGameData.setEmail(mAuth.getCurrentUser().getEmail());
+
+
+        FirebaseDatabase memoryGameDB = FirebaseDatabase.getInstance().getInstance();
+        DatabaseReference ref = memoryGameDB.getReference();
+        //TODO: Needed to establish "timestamp" as key to avoid overrides and use the push( ) method
+        DatabaseReference pushedKEYRef = ref.push();
+        String t = memoryGameData.getTimeStamp();
+        String timeStampID = pushedKEYRef.getKey();
+
+        ref.child("memorygame").child("user").setValue(mAuth.getCurrentUser().getEmail());
+        ref.child("memorygame").child("level03");
+        ref.child("memorygame").child("level03").child("timestamp").child("ID:"+timeStampID).setValue(memoryGameData.getTimeStamp());
+        ref.child("memorygame").child("level03").child("timestamp").child("ID"+timeStampID).child(memoryGameData.getTimeStamp())
+                .child("score").setValue(turns);
+
+
+
+        Log.d("ACTION: MEMORYGAME INFO"," Access");
+
+        //TODO: Upload data once user returns to level menu
         Intent intent = new Intent(this, MemoryLevels.class);
         startActivity(intent);
+    }
+
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Level 3" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
     }
 }
 

@@ -31,7 +31,7 @@ public class LoginActivity extends Activity
 
 
     private static final String TAG = "EmailPassword";
-    private FirebaseAnalytics mFirebaseAnalytics;
+
     Button login, forgotpass, signup;
     EditText EmailEdit, passwordEdit;
 
@@ -46,8 +46,6 @@ public class LoginActivity extends Activity
 
 
 
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         //Views && Buttons
         login = (Button) findViewById(R.id.LoginButton);
@@ -68,8 +66,6 @@ public class LoginActivity extends Activity
                 {
                     // User is signed in
 
-//                    userID = user.getUid();
-//                    email = user.getEmail();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -86,12 +82,12 @@ public class LoginActivity extends Activity
                     signIn(EmailEdit.getText().toString(), passwordEdit.getText().toString());
 
 
-               // }
+               }
 
 
 
 
-            }
+
 
 
         });
@@ -179,7 +175,7 @@ public class LoginActivity extends Activity
                         else
                         {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, "Incorrect Email Address",
+                            Toast.makeText(LoginActivity.this, "Incorrect Credentials",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.UserProfileActivity">
+
+
+    <Button
+        android:text="Speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button10"
+        android:textSize="25sp"
+        android:onClick="onClick"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/button8"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button8"
+        android:textSize="25sp"
+        android:onClick="onClick"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        tools:text="Profile"
+        android:textSize="35sp"
+        android:textStyle="normal|bold"
+        android:layout_marginBottom="36dp"
+        android:layout_above="@+id/ProfileName"
+        android:layout_alignRight="@+id/button10"
+        android:layout_alignEnd="@+id/button10" />
+
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ProfileName"
+        android:textSize="25sp"
+        android:layout_alignBottom="@+id/profilepic"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginBottom="28dp" />
+
+    <ImageView
+        android:src="@drawable/brainlogo"
+        android:scaleType="fitStart"
+        android:id="@+id/brainlogo"
+        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:src="@drawable/speedicon"
+        android:scaleType="fitStart"
+        android:id="@+id/profilepic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/brainlogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:text="Game Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal|bold"
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/editText7"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+
+    <Button
+        android:id="@+id/attentionButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Attention"
+        android:textSize="25sp"
+        android:layout_below="@+id/button10"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=" "
+        android:layout_alignBottom="@+id/ProfileName"
+        android:layout_alignLeft="@+id/button8"
+        android:layout_alignStart="@+id/button8" />
+
+    <TextView
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=" "
+        android:layout_below="@+id/ProfileName"
+        android:layout_alignLeft="@+id/editText6"
+        android:layout_alignStart="@+id/editText6" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ProfileName"
+        android:layout_toLeftOf="@+id/attentionButt"
+        android:layout_toStartOf="@+id/attentionButt"
+        android:text="First Name: " />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView13"
+        android:layout_alignRight="@+id/textView13"
+        android:layout_below="@+id/profilepic"
+        android:layout_marginTop="12dp"
+        android:text="Last Name: " />
+
+    <Button
+        android:id="@+id/backtoDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/attentionButt"
+        android:layout_marginTop="25dp"
+        android:layout_toLeftOf="@+id/textView18"
+        android:layout_toStartOf="@+id/textView18"
+        android:text="Return" />
+
+</RelativeLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:text="Memory Game Stats"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:textSize="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView14"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="105dp"
+        android:text="Level 1"
+        tools:text="Level 1" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView15"
+        android:layout_alignStart="@+id/textView15"
+        android:layout_below="@+id/textView15"
+        android:textSize="35dp"
+
+        android:layout_marginTop="140dp"
+        android:text="Level 2"
+        tools:text="Level 2" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView16"
+        android:layout_alignStart="@+id/textView16"
+        android:textSize="35dp"
+        android:layout_below="@+id/textView16"
+        android:layout_marginTop="187dp"
+        android:text="Level 3"
+        tools:text="Level 3" />
+
+    <TextView
+        android:id="@+id/level1scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView15"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="58dp"
+        android:layout_toEndOf="@+id/textView15"
+        android:layout_toRightOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/level2scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/level1scores"
+        android:layout_alignStart="@+id/level1scores"
+        android:layout_below="@+id/textView16"
+        android:layout_marginTop="87dp" />
+
+    <TextView
+        android:id="@+id/level3scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView17"
+        android:layout_marginTop="87dp"
+        android:layout_toEndOf="@+id/textView17"
+        android:layout_toRightOf="@+id/textView17" />
+
+    <Button
+        android:id="@+id/backtoProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/level3scores"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:text="Return" />
+</RelativeLayout>

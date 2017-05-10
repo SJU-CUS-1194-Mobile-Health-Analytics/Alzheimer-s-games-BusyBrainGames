@@ -91,7 +91,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        app:srcCompat="@drawable/speedicon" />
+        android:src="@drawable/speedicon" />
 
     <TextView
         android:id="@+id/textView6"

@@ -13,9 +13,12 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:id="@+id/button2"
+        android:layout_marginBottom="12dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp" />
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp" />
 
     <ImageView
         android:src="@drawable/brainlogo"
@@ -36,16 +39,15 @@
         android:layout_alignStart="@+id/imageView" />
 
     <EditText
+        android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Enter Last Name"
+        android:layout_marginTop="22dp"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:inputType="textPersonName"
         android:layout_below="@+id/editText"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_toEndOf="@+id/button2"
-        android:layout_marginTop="19dp" />
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
 
     <TextView
         android:text="Last Name"
@@ -69,18 +71,16 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/editText"
-        tools:text="Enter First Name"
         android:layout_marginTop="13dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:textSize="20sp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
 
     <TextView
         android:text="Email "
@@ -129,27 +129,25 @@
         android:layout_marginTop="16dp" />
 
     <EditText
+        android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Create Username"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_alignTop="@+id/textView5"
         android:layout_alignLeft="@+id/editText3"
         android:layout_alignStart="@+id/editText3"
-        android:layout_marginTop="12dp" />
+        android:layout_alignTop="@+id/textView5"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:text="Enter Valid Email"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:layout_alignStart="@+id/editText2"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:text="Password"
@@ -165,15 +163,17 @@
         android:layout_marginTop="10dp" />
 
     <EditText
+        android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
-        android:text="Create Password"
+        android:hint="Create Password"
+        android:inputType="textPassword"
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_toEndOf="@+id/button2" />
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp" />
 
 </RelativeLayout>

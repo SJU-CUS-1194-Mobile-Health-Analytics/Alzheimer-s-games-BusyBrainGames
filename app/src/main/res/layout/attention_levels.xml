@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   tools:context=".AttentionLevels"
+    >
+
+
+    <Button
+        android:text="Level 3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        android:onClick="onClick"
+        android:id="@+id/level3button"
+        android:layout_below="@+id/level2button"
+        android:layout_alignLeft="@+id/level2button"
+        android:layout_marginTop="82dp" />
+
+    <ImageView
+        android:src="@drawable/attentionicon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/brainlogo"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="ATTENTION GAME"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="60sp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/brainlogo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp" />
+
+    <Button
+        android:text="Level 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        android:id="@+id/level1button"
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
+
+    <Button
+        android:text="Level 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        android:id="@+id/level2button"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/level1button"
+        android:layout_alignLeft="@+id/level1button" />
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Return"
+    android:onClick="onClick"
+    android:id="@+id/rebutt"
+    android:layout_alignParentBottom="true"
+    android:layout_alignLeft="@+id/textView8"
+    android:layout_alignStart="@+id/textView8"
+    android:layout_marginBottom="19dp" />
+
+
+</RelativeLayout>

@@ -18,7 +18,8 @@ import android.content.Context;
 
 
 import java.util.ArrayList;
-        import java.util.List;
+import java.util.Date;
+import java.util.List;
         import java.util.Random;
         import java.util.Timer;
         import java.util.TimerTask;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,19 +66,29 @@ public class MemoryGame_Level1 extends AppCompatActivity {
     private int x=4;
     private int y=4;
     int turns;
+
+    int moves;
+    Date date= new Date();
+    String datetime=date.toString();
+    GameScore score;
+
+
     private TableLayout menuLayout;
     private UpdateCardsHandler handler;
 
-
+    private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game_level1);
+
+        mAuth = FirebaseAuth.getInstance();
+
         handler = new UpdateCardsHandler();
         createCards();
-        backOfCard = getResources().getDrawable(R.drawable.memorybrain);
+        backOfCard = getResources().getDrawable(R.drawable.redbrain);
         menuLayout = (TableLayout) findViewById(R.id.MenuLayout);
         context = menuLayout.getContext();
         buttonListener = new ButtonListener();
@@ -267,9 +279,43 @@ public class MemoryGame_Level1 extends AppCompatActivity {
     }
     public void sendMessage( View v)
     {
+
+        //TODO: Create FireBase DB Table for Memory Game
+        MemoryGameData memoryGameData = new MemoryGameData();
+        memoryGameData.setEmail(mAuth.getCurrentUser().getEmail());
+
+
+        FirebaseDatabase memoryGameDB = FirebaseDatabase.getInstance().getInstance();
+        DatabaseReference ref = memoryGameDB.getReference();
+        //TODO: Needed to establish "timestamp" as key to avoid overrides and use the push( ) method
+        DatabaseReference pushedKEYRef = ref.push();
+        String t = memoryGameData.getTimeStamp();
+        String timeStampID = pushedKEYRef.getKey();
+
+        ref.child("memorygame").child("user").setValue(mAuth.getCurrentUser().getEmail());
+        ref.child("memorygame").child("level01");
+        ref.child("memorygame").child("level01").child("timestamp").child("ID:"+timeStampID).setValue(memoryGameData.getTimeStamp());
+        ref.child("memorygame").child("level01").child("timestamp").child("ID"+timeStampID).child(memoryGameData.getTimeStamp())
+                .child("score").setValue(turns);
+
+
+
+        Log.d("ACTION: MEMORYGAME INFO"," Access");
+
+        //TODO: Upload data once user returns to level menu
         Intent intent = new Intent(this, MemoryLevels.class);
         startActivity(intent);
     }
+
+    public String getScoreInfo(GameScore scores)
+    {
+        return "Level 1" + " Date: " + scores.getTime() +" "+ "Moves: " +  scores.getScore();
+    }
+
+
+
+
+
 
 
 

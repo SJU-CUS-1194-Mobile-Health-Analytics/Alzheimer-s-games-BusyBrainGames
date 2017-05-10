@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_dashboard"
     android:layout_width="match_parent"
@@ -9,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
     tools:context="com.example.sjack158.alzheimer_s_games_phase01_mockups.DashboardActivity"
 
     android:background="@color/common_google_signin_btn_text_dark_default">
@@ -17,7 +16,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/memorybrain"
+        android:src="@drawable/memorybrain"
         android:id="@+id/memorybutton"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:layout_marginLeft="14dp"
@@ -27,7 +26,7 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
-        app:srcCompat="@drawable/attentionicon"
+        android:src="@drawable/attentionicon"
         android:id="@+id/attentionbutton"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:layout_height="wrap_content"
@@ -38,16 +37,16 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Problem Solving"
+        android:id="@+id/profileIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/problemsolveTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/attentionbutton"
+        android:text="Profile Settings"
         android:textAllCaps="true"
         android:textSize="30sp"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/attentionbutton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="Perception"
@@ -88,23 +87,23 @@
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        app:srcCompat="@drawable/problemsolving"
-        android:id="@+id/problemsolvingbutton"
-        android:background="@color/common_google_signin_btn_text_dark_default"
-        android:layout_width="250dp"
+        android:id="@+id/profilebutton"
+        android:layout_width="300dp"
         android:layout_height="250dp"
-        android:layout_above="@+id/problemsolveTextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:src="@drawable/profileicon"
+        android:layout_above="@+id/profileIcon"
+        android:layout_alignLeft="@+id/profileIcon"
+        android:layout_alignStart="@+id/profileIcon" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/speedicon"
+        android:src="@drawable/speedicon"
         android:id="@+id/speedbutton"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:layout_marginTop="78dp"
-        android:layout_below="@+id/problemsolveTextView"
+        android:layout_below="@+id/profileIcon"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp"
@@ -120,4 +119,5 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/percepTextView"
         android:layout_toEndOf="@+id/percepTextView" />
+
 </RelativeLayout>
