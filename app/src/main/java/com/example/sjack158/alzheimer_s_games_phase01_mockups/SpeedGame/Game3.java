@@ -1,4 +1,5 @@
-package com.example.sjack158.alzheimer_s_games_phase01_mockups;
+package com.example.sjack158.alzheimer_s_games_phase01_mockups.SpeedGame;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -7,9 +8,8 @@ import android.widget.TextView;
  * Created by CelesteG on 4/19/17.
  */
 
-public class Game2 {
-
-    private int size=12;
+public class Game3 {
+    private int size=15;
 
     public Button[] buttons = new Button[size];
     public TextView message;
@@ -23,7 +23,7 @@ public class Game2 {
 
 
 
-    public Game2( Button[] buttons, TextView message) {
+    public Game3( Button[] buttons, TextView message) {
         this.buttons = buttons;
         this.message = message;
 

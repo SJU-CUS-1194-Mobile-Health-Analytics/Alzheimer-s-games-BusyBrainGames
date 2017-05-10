@@ -96,7 +96,7 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:text="Alzheimer's disease is the 6th leading cause of death in the United States. It is the only cause of death among the top 10 in America that cannot be prevented, cured or even slowed."
+        android:text="Deaths from Alzheimer’s increased 71 percent from 2000 to 2013, while deaths from other major diseases (including heart disease, stroke, breast and prostate cancer, and HIV/AIDS) decreased."
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
